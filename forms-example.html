@@ -1,0 +1,70 @@
+<html ng-app>
+<head>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<title>AngularJS Forms Example</title>
+</head>
+<body>
+	<form ng-submit="requestFunding()" ng-controller="StartUpController">
+		Starting: <input ng-change="computeNeeded()"
+			ng-model="startingEstimate"> Recommendation: {{needed}}
+		<button>Fund my startup!</button>
+		<button ng-click="reset()">Reset</button>
+	</form>
+	<div ng-controller="StudentListController">
+		<ul>
+			<li ng-repeat="student in students"><a
+				href='/student/view/{{student.id}}'>{{student.name}}</a></li>
+		</ul>
+		<button ng-click="insertTom()">Insert</button>
+	</div>
+	
+	<div ng-controller="DeathrayMenuController">
+		<ul ng-show="menuState.show">
+			<li>Stun</li>
+			<li>Disintegrate</li>
+			<li>Erase from history</li>
+		</ul>
+		<button ng-click="toggleMenu()">Toggle Menu</button>
+	<div/>
+	
+	<script type="text/javascript">
+		function StartUpController($scope) {
+			$scope.needed = 0;
+			
+			$scope.computeNeeded = function() {
+				$scope.needed = $scope.startingEstimate * 10;
+			};
+		
+			$scope.requestFunding = function() {
+				window.alert("Sorry, please get more customers first.");
+			};
+		
+			$scope.reset = function() {
+				$scope.startingEstimate = 0;
+				$scope.needed = 0;
+			};
+		}
+		
+		function StudentListController($scope) {
+			$scope.students = [{name:'Mary', id: 1},
+			                   {name:'Joe', id:2},
+			                   {name: 'Oz', id:3},
+			                   {name: 'Warren', id:4}];
+			
+			$scope.insertTom = function () {
+				$scope.students.push({name:'Tom Thumb', id:'4'});
+			};
+		}
+		
+		
+		var DeathrayMenuController = function($scope) {
+			$scope.menuState = { show: false };
+			
+			$scope.toggleMenu = function() {
+				$scope.menuState.show = !$scope.menuState.show;
+			};
+		}
+	</script>
+</body>
+</html>

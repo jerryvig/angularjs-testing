@@ -1,0 +1,107 @@
+body {
+   margin: 0px;
+   padding: 5px;
+   background-color: #c0c0c0;
+}
+
+a:active {
+	background-color: #82cafa; 
+}
+
+#displayTable {
+   font-family: arial;
+   font-weight: bold;
+   width:100%;
+   border-spacing: 0px;
+   border-width:0px;
+   border-radius: 10px;
+   padding: 5px;
+   -webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.7);
+   -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.7);
+}
+
+.blue-row-header {
+	 background-color: #007FFF;
+     color: white;
+     font-size: large;
+}
+
+.blue-row {
+   background-color: #007FFF;
+   color: white;
+}
+
+.white-row {
+   background-color: white;
+   color: #007FFF;
+}
+
+.div-button {
+	display:inline-block;
+	background-color:#007FFF;
+	padding:5px;
+	width:48%;
+	color: white;
+	font-family: arial;
+    font-weight: bold;
+	text-align: center;
+	-webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.7);
+   	-moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.7);
+}
+
+.div-button:active {
+	background-color: white;
+	color: #007FFF;
+}
+
+#nextButton {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-style: outset;
+	border-width: 1px;
+}
+
+#lastButton {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-style: outset;
+	border-width: 1px;
+}
+
+th:active {
+	background-color: white;
+	color: #007FFF;
+}
+
+td {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.yieldCell {
+	text-align: right;
+}
+
+#tickerColumnHeader {
+	width: 11%;
+}
+
+#marketCapColumnHeader {
+	width: 11%;
+}
+
+#yieldColumnHeader {
+	width: 11%;
+}
+
+#nameColumnHeader {
+	width: 22%;
+}
+
+#sectorColumnHeader {
+	width: 22%;
+}
+
+#industryColumnHeader {
+	width: 22%;
+}
