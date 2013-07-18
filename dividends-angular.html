@@ -1,4 +1,3 @@
-<!doctype html>
 <html ng-app>
 <head>
 	<title>Top Dividends Table From AngularJS</title>
@@ -13,12 +12,12 @@
 				<th colspan="6">Top Dividends Table</th>
 			</tr>
 			<tr class="blue-row-header">
-				<th id="tickerColumnHeader">Ticker</th>
-				<th id="nameColumnHeader">Name</th>
-				<th id="sectorColumnHeader">Sector</th>
-				<th id="industryColumnHeader">Industry</th>
-				<th id="marketCapColumnHeader">Market Cap</th>
-				<th id="yieldColumnHeader">Yield</th>
+				<th id="tickerColumnHeader" ng-click="sortByTicker()">Ticker</th>
+				<th id="nameColumnHeader" ng-click="sortByName()">Name</th>
+				<th id="sectorColumnHeader" ng-click="sortBySector()">Sector</th>
+				<th id="industryColumnHeader" ng-click="sortByIndustry()">Industry</th>
+				<th id="marketCapColumnHeader" ng-click="sortByMarketCap()">Market Cap</th>
+				<th id="yieldColumnHeader" ng-click="sortByYield()">Yield</th>
 			</tr>
 			<tr ng-repeat="record in records" ng-class="nextRowClass()">
 				<td>{{record.t}}</td>
@@ -40,18 +39,32 @@
 </div>
 <script type="text/javascript">
 	var DividendsController = function($scope) {
+		/**
+		 * Initial value of the rowClass variable for alternating the CSS class of the rows in the table.
+		 */
 		$scope.rowClass = 'blue-row';
 		
 	 	$scope.records = [{"t":"ENZN","n":"","mc":"","l":1.89,"y":"190.48%","s":"Healthcare","i":"Biotechnology","e":"43"},{"t":"NC","n":"","mc":"","l":56.39,"y":"160.06%","s":"Industrial Goods","i":"Farm &amp; Construction Machinery","e":"4,300"},{"t":"STV","n":"","mc":"","l":1.47,"y":"156.46%","s":"Technology","i":"Application Software","e":"778"},{"t":"MAXY","n":"","mc":"","l":2.49,"y":"144.58%","s":"Services","i":"Research Services","e":"6"},{"t":"HKTV","n":"","mc":"","l":6.06,"y":"112.74%","s":"N/A","i":"N/A","e":"561"},{"t":"TYC","n":"","mc":"","l":34.41,"y":"85.41%","s":"Services","i":"Security &amp; Protection Services","e":"70,000"},{"t":"QLTI","n":"","mc":"","l":4.6,"y":"85.11%","s":"Healthcare","i":"Biotechnology","e":"38"},{"t":"IQNT","n":"","mc":"","l":5.74,"y":"75.14%","s":"Technology","i":"Wireless Communications","e":"281"},{"t":"WHX","n":"","mc":"","l":3.57,"y":"62.52%","s":"Basic Materials","i":"Oil &amp; Gas Drilling &amp; Exploration","e":"N/A"},{"t":"FRS","n":"","mc":"","l":18.28,"y":"55.47%","s":"Services","i":"Restaurants","e":"2,650"},{"t":"GYRO","n":"","mc":"","l":72.01,"y":"53.19%","s":"Financial","i":"REIT - Office","e":"8"},{"t":"MDLZ","n":"","mc":"","l":28.78,"y":"52.06%","s":"Consumer Goods","i":"Confectioners","e":"110,000"},{"t":"TSRI","n":"","mc":"","l":2.94,"y":"51.02%","s":"Technology","i":"Business Software &amp; Services","e":"195"},{"t":"TLAB","n":"","mc":"","l":2.05,"y":"50.73%","s":"Technology","i":"Communication Equipment","e":"2,525"},{"t":"LORL","n":"","mc":"","l":60.69,"y":"47.78%","s":"Technology","i":"Communication Equipment","e":"21"},{"t":"ALX","n":"","mc":"1.55","l":306.78,"y":"44.01%","s":"Financial","i":"REIT - Retail","e":"72"},{"t":"BAH","n":"","mc":"2.21","l":17.61,"y":"39.01%","s":"Services","i":"Management Services","e":"24,800"},{"t":"OIBR","n":"","mc":"","l":1.56,"y":"38.97%","s":"","i":"","e":"undefined"},{"t":"AWRE","n":"","mc":"108.52M","l":5.26,"y":"34.22%","s":"Technology","i":"Communication Equipment","e":"73"},{"t":"PTIE","n":"","mc":"","l":2.25,"y":"33.33%","s":"Healthcare","i":"Biotechnology","e":"8"},{"t":"BOTA","n":"","mc":"","l":3.37,"y":"32.88%","s":"Healthcare","i":"Biotechnology","e":"N/A"},{"t":"HEES","n":"","mc":"","l":21.55,"y":"32.48%","s":"Industrial Goods","i":"Industrial Equipment &amp; Components","e":"1,744"},{"t":"EVI","n":"","mc":"","l":1.85,"y":"32.43%","s":"Services","i":"Consumer Services","e":"29"},{"t":"BAGL","n":"","mc":"232.75M","l":14.92,"y":"30.16%","s":"Services","i":"Restaurants","e":"6,912"},{"t":"CVI","n":"","mc":"4.92","l":45.22,"y":"28.2%","s":"Basic Materials","i":"Oil &amp; Gas Refining &amp; Marketing","e":"1,091"},{"t":"DCIX","n":"","mc":"178.34M","l":4.28,"y":"28.04%","s":"Services","i":"Shipping","e":"N/A"},{"t":"CHH","n":"","mc":"2.27","l":39.91,"y":"27.94%","s":"Services","i":"Lodging","e":"1,095"},{"t":"CLUB","n":"","mc":"249.32M","l":10.94,"y":"27.42%","s":"Services","i":"Sporting Activities","e":"3,200"},{"t":"CIG","n":"","mc":"10.33B","l":8.69,"y":"26.21%","s":"N/A","i":"N/A","e":"8,368"},{"t":"OXF","n":"","mc":"","l":2.48,"y":"25.73%","s":"Basic Materials","i":"Industrial Metals &amp; Minerals","e":"758"}];
 	
+	 	/**
+		 *  Click handler for the 'Next' button on the page.
+		 */
 		$scope.next = function() {
 			alert('YOU CLICKED NEXT');
 		}
 		
+		/**
+		 *  Click handler for the 'Last' button on the page.
+		 */
 		$scope.last = function() {
 			alert('YOU CLICKED LAST');
 		}
 		
+		/**
+		 *  This method alternates the value of the class for the rows in the table,  
+		 *  which enables having blue rows and white rows in the table with alternating color styles.
+		 *
+		 */
 		$scope.nextRowClass = function() {
 			$scope.rowClass = ($scope.rowClass == 'blue-row') ? 'white-row' : 'blue-row';
 			return $scope.rowClass;
