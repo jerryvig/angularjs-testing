@@ -9,5 +9,19 @@
 		<p>{{greeting.text}}, World</p>
 	</div>
 	
+	<div ng-controller='CountController'>
+		<label ng-bind="count" style="display:block"></label>
+		<input type="text" ng-bind="count">
+		<button ng-click="incrementCount()" style="display:block;">Set count to three</button>
+	</div>
+	<script type="text/javascript">
+		function CountController($scope) {
+			$scope.count = 0;
+			
+			$scope.incrementCount = function(){
+				$scope.count++;
+			}
+		}
+	</script>
 </body>
 </html>
